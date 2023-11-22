@@ -6,6 +6,8 @@ import ldts.dino.utils.Position;
 import ldts.dino.viewer.Colors;
 import ldts.dino.viewer.Viewer;
 
+import java.util.List;
+
 public abstract class MenuViewer<T extends Menu> extends Viewer<T> {
 
     private final Integer entriesX, entriesY;
@@ -20,7 +22,6 @@ public abstract class MenuViewer<T extends Menu> extends Viewer<T> {
     protected void drawElements(GUI gui) {
         //draw the menu stuff
         gui.paintBackground(Colors.MENU_BACKGROUND.getHex());
-
         drawEntries(gui);
     }
 

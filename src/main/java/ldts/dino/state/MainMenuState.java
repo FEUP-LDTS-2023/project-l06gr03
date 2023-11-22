@@ -10,6 +10,7 @@ import ldts.dino.viewer.menu.MainMenuViewer;
 import ldts.dino.viewer.menu.MenuViewer;
 
 public class MainMenuState extends State<MainMenu>{
+
     public MainMenuState(MainMenu model) {
         super(model);
     }

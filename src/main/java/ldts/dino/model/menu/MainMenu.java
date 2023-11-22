@@ -14,8 +14,5 @@ public class MainMenu extends Menu {
     public boolean isSelectedLeaderboard() {
         return isSelected(2);
     }
-    public boolean isSelectedExit() {
-        return isSelected(3);
-    }
-
+    public boolean isSelectedExit() { return isSelected(3); }
 }

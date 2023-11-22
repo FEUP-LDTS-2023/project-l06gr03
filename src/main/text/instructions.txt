@@ -1,0 +1,11 @@
+The goal of the game is to
+get as many points as you can
+without colliding with the
+cactus nor the birds.
+
+You can jump by pressing
+ARROW UP and squat with
+ARROW DOWN.
+
+You can collect points by
+touching them with Dino.

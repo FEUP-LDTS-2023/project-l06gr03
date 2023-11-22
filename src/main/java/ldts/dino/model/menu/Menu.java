@@ -25,10 +25,6 @@ public abstract class Menu {
             currentEntry = this.entries.size() - 1;
     }
 
-    public int getCurrentEntry() {
-        return currentEntry;
-    }
-
     public boolean isSelected(int i) {
         return currentEntry == i;
     }
