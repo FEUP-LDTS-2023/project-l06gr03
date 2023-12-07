@@ -32,12 +32,11 @@ public class DinoController extends Controller<Game> {
         }
     }
 
-
     private void updatePosition() {
         Position position = dino.getPosition();
         position.setY(position.getY() + dino.getSpeed());
         dino.setSpeed(dino.getSpeed() + dino.getGravity());
-        System.out.println(position);
+        // System.out.println(position);
     }
 
     private void jump() {

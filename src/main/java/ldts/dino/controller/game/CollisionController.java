@@ -6,6 +6,7 @@ import ldts.dino.controller.game.elements.DinoController;
 import ldts.dino.gui.GUI;
 import ldts.dino.model.game.Game;
 import ldts.dino.model.game.elements.Ground;
+import ldts.dino.model.game.elements.collectables.Collectable;
 import ldts.dino.model.game.elements.obstacles.Obstacle;
 import ldts.dino.model.menu.GameOverMenu;
 import ldts.dino.state.GameOverState;
@@ -26,6 +27,9 @@ public class CollisionController extends Controller<Game> {
                 application.setState(new GameOverState(new GameOverMenu()));
                 return;
             }
+        }
+
+        for(Collectable collectable: getModel().getCollectables()) {
         }
     }
 }

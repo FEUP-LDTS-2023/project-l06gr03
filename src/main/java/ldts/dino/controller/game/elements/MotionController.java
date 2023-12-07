@@ -17,6 +17,7 @@ public class MotionController extends Controller<Game> {
     @Override
     public void step(Application application, GUI.ACTION action, long time) {
         moveObstacles();
+        moveCollectables();
     }
 
     private void moveObstacles() {
@@ -29,5 +30,17 @@ public class MotionController extends Controller<Game> {
             }
         }
     }
+    private void moveCollectables() {
+        Iterator<Collectable> collectableIterator = getModel().getCollectables().iterator();
+        while (collectableIterator.hasNext()) {
+            Collectable collectable = collectableIterator.next();
+            collectable.move();
+            if (collectable.isOutOfScreen()) {
+                collectableIterator.remove();
+            }
+        }
+    }
+
+
 
 }
