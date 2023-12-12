@@ -28,7 +28,7 @@ public class GameController extends Controller<Game> {
                 application.setState(null);
                 break;
             case BOMB:
-                if (!getModel().getDino().getBombs().isEmpty()) {
+                if (!getModel().getDino().getBombs().isEmpty() && !getModel().getObstacles().isEmpty()) {
                     getModel().getDino().getBombs().remove(0);
                     if (getModel().getDino().getPosition().getX() > getModel().getObstacles().get(0).getPosition().getX()) {
                         getModel().getObstacles().remove(1);
@@ -43,6 +43,5 @@ public class GameController extends Controller<Game> {
         motionController.step(application, action, time);
         dinoController.step(application, action, time);
         collisionController.step(application, action, time);
-
     }
 }

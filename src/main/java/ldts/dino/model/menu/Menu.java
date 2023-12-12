@@ -3,7 +3,7 @@ import java.util.List;
 
 public abstract class Menu {
     protected List<String> entries;
-    protected int currentEntry = 0;
+    protected static int currentEntry = 0;
 
     public int getNumberEntries() {
         return this.entries.size();
@@ -25,8 +25,8 @@ public abstract class Menu {
             currentEntry = this.entries.size() - 1;
     }
 
-    public int getCurrentEntry() {
-        return currentEntry;
+    public static void setCurrentEntry(int currentEntry) {
+        Menu.currentEntry = currentEntry;
     }
 
     public boolean isSelected(int i) {

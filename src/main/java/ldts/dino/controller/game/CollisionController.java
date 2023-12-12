@@ -28,7 +28,7 @@ public class CollisionController extends Controller<Game> {
         if(!getModel().isShieldActivated()) {
             for (Obstacle obstacle : getModel().getObstacles()) {
                 if (obstacle.isColliding(getModel().getDino())) {
-                    application.setState(new GameOverState(new GameOverMenu()));
+                    application.setState(new GameOverState(new GameOverMenu(), (int) getModel().getScore()));
                     return;
                 }
             }

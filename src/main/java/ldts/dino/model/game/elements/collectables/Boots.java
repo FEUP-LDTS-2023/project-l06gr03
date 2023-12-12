@@ -3,6 +3,7 @@ package ldts.dino.model.game.elements.collectables;
 import ldts.dino.gui.LanternaGUI;
 import ldts.dino.model.game.Game;
 import ldts.dino.model.game.elements.Ground;
+import ldts.dino.model.game.elements.dino.Dino;
 import ldts.dino.utils.Position;
 
 import java.util.Random;
@@ -12,7 +13,6 @@ public class Boots extends Collectable {
     public static final int WIDTH = 10;
     public static final int HEIGHT = 10;
     private final Random random;
-    public boolean hasBoots = false;
 
     public Boots() {
         super(new Position(LanternaGUI.WIDTH, 50), WIDTH, HEIGHT);
@@ -23,5 +23,6 @@ public class Boots extends Collectable {
 
     @Override
     public void consume(Game game) {
+        game.getDino().setHasBoots(true);
     }
 }

@@ -12,6 +12,7 @@ public abstract class Dino extends Element {
     public final int MAX_SPEED = 10;
     public int gravity = 1;
     public static List<Integer> bombs = new ArrayList<>();
+    public boolean hasBoots = false;
 
 
     public Dino(Position position, int width, int height) {
@@ -32,5 +33,13 @@ public abstract class Dino extends Element {
 
     public List<Integer> getBombs() {
         return bombs;
+    }
+
+    public void setHasBoots(boolean hasBoots) {
+        this.hasBoots = hasBoots;
+    }
+
+    public boolean getHasBoots() {
+        return hasBoots;
     }
 }

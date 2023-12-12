@@ -22,6 +22,6 @@ public class Coin extends Collectable {
 
     @Override
     public void consume(Game game) {
-        game.setScore(game.getScore() + 200);
+        game.setScore(game.getScore() + 100);
     }
 }

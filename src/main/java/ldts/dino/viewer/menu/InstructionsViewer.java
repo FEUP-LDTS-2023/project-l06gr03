@@ -13,6 +13,6 @@ public class InstructionsViewer extends MenuViewer<InstructionsMenu> {
 
     @Override
     protected void drawEntries(GUI gui, Integer entriesX, Integer entriesY) {
-
+        gui.drawImageFromFile(new Position(0, 0), "instructions");
     }
 }
