@@ -12,30 +12,28 @@ Software Design and Testing Laboratory
 
 ### IMPLEMENTED FEATURES
 
-- **Menu** - Part of the menu is already implemented.
+- **Menu** - The game has a menu that can be accessed at the beginning of the game as soon as we run it, and when we lose. The menu has four options:
+  - **Start** - Starts a new game.
+  - **Instructions** - Displays the instructions of the game.
+  - **Leaderboard** - Displays the three highest scores.
+  - **Exit** - Exits the game.
+- **Playable character** - Dino jumps when the arrow up  key or the space bar is pressed, crouches when the arrow down key is pressed, and uses a bomb if he has it his inventory pressing the arrow left key. If the arrow key or the space bar are pressed when Dino is crouched he will return to his "normal mode".
+- **Random obstacles** - There is two possible obstacles that can be randomly generated: a plane, or a city, which is a group of buildings that are either small or large, and could appear as a group of three, two, or just one building.
+- **Collectables** -The game has collectable objects that can be consumed by the player:
+  - **Bomb** - If the player catches a bomb, it will be stored in his inventory (which is represented in the top right corner, with a counter of the number of bombs the player has) to use whenever he wants to explode the next obstacle. There is a maximum capacity of the inventory of 5 bombs.
+  - **Shield** - Dino is able to wear a shield that protects him for a short time (that is represented ion the top left corner). If he collides with an obstacle when he's wearing the shield, the player will not lose.
+  - **Boots** - The game character has a higher jump during a certain period of time (which is represented ion the top left corner).
+  - **Coin** - The coin will add 100 points to the player's score.
+- **Collision detector** - The game has the ability to detect when Dino collides with the obstacles to make the player lose or when Dino catches a collectable to consume it.
+- **Difficulty controller** - To make the game more dynamic, the more points you have, the faster it will become, making it increasingly difficult.
+- **Music and sound effects** - There is background music and many sound effects throughout the game for each player's action.
+- **Game Over** - The game displays a game over screen when the player collides with an obstacle. The player will have two options:
+  - **Start** - Starts a new game.
+  - **Menu** - The player goes to the main menu.
 
 ### PLANNED FEATURES
 
-- **Jumping** - Dino will jump when the arrow up  key is pressed.
-- **Squatting** - The game character will squat when the arrow down key is pressed.
-- **Menu** - The game has a menu that can be accessed at the beginning of the game as soon as we run it, and when we lose. The menu has four options:
-    - **Start** - Starts a new game.
-    - **Instructions** - Displays the instructions of the game.
-    - **Leaderboard** - Displays the highest scores.
-    - **Exit** - Exits the game.
-- **Random obstacles** - We want to generate buildings, cities and planes at random (but logical) positions.
-- **Collectables** -The game will have collectable objects that can be collected by the player:
-  - **Bomb** - If the player catches a bomb, it will be stored in his inventory to use whenever he wants. The bomb explodes the nearest obstacle.
-  - **Shield** - Dino will be able to wear a shield that protects him for a short time. If he collides with an obstacle when he's wearing the shield, the player will not lose.
-  - **Boots** - The game character will have a higher jump during a certain period of time.
-  - **Coin** - The coin will increase the player score.
-- **Collision detector** - It is important to make the game detect when Dino collides with the obstacles so that we can know when the player lost or caught a collectable.
-- **Music and sound effects** - Our idea is to implement background music and sound effects for the game.
-- **Game Over** - The game needs to display a game over screen when the player collides with an obstacles. The player will have two options:
-  - **Start** - Starts a new game.
-  - **Menu** - The player goes to the Menu.
-  - **Coin Multiplier** - (OPTIONAL) It's an idea for a future feature that implements the Strategy
-Pattern to create a coin multiplicator depending on how far the player in his run.
+- All the features were implemented.
 
 <br/>
 
@@ -43,17 +41,40 @@ Pattern to create a coin multiplicator depending on how far the player in his ru
 ![sketch2.png](src%2Fmain%2Fresources%2Fmockups%2Fsketch2.png)
 ### DESIGN
 
-#### LANTERNA LIBRARY SIMPLICATION
+#### CODE'S STRUCTURE
 
 **Problem in Context**
 
-In order to make the game development easier and more scalable you should
-be able to easily change the UI library without changing the rest of the code.
+As the game's complexity grows, the code becomes increasingly intricate, making it harder to comprehend and maintain over time.
+This challenge escalates as new features are added, demanding more effort to manage and update the codebase effectively.
+
+**The Pattern**
+
+The MVC (Model-View-Controller) architecture proves beneficial as it segregates the code into three core components: the model, the view, and the controller.
+The model handles data, the view manages the visual interface, and the controller oversees the game's logic.
+These distinct components operate independently yet collaboratively, synergizing their functionalities to ensure the seamless operation of the game. This segregation enables efficient development, modification, and enhancement of each component without compromising the overall functionality of the game.
+
+**Implementation**
+
+![mvc.jpg](src%2Fmain%2Fresources%2Fuml%2Fmvc.jpg)
+
+**Consequences**
+
+Implementing MVC simplifies managing the game's complexity by dividing it into distinct parts: model, view, and controller. This division streamlines development, making it easier to update or enhance specific components without affecting the entire game's functionality.
+It promotes a clearer structure and facilitates smoother collaboration between different aspects of the game, easing the management and evolution of the codebase as the game grows.
+
+
+#### LANTERNA LIBRARY SIMPLIFICATION
+
+**Problem in Context**
+
+The GUI librabry (Lanterna) could be confusing and more extensive than we really need.
+We should be able to make this framework easy to handle without affecting the rest of the code.
 
 **The Pattern**
 
 To solve this problem we use the **Facade** Pattern since it provides a
-simplified interface to a library, a framework, or any other complex set of classes.
+simplified interface to the library we are working with and assures that it can be easily changed.
 
 **Implementation**
 
@@ -68,6 +89,12 @@ These classes could be found in the following files:
 - [Application](./src/main/java/ldts/dino/Application.java)
 - [GUI](./src/main/java/ldts/dino/gui/GUI.java)
 - [LanternaGUI](./src/main/java/ldts/dino/gui/LanternaGUI.java)
+
+**Consequences**
+
+By using the Facade Pattern, handling the Lanterna GUI library becomes simpler and more straightforward.
+It reduces confusion and makes it easier for us to work with the library without needing extensive knowledge.
+It makes our system easier to maintain and adapt, allowing us to make updates without causing major issues in the overall structure.
 
 
 #### MANAGING GAME STATE TRANSITIONS
@@ -104,9 +131,9 @@ These classes could be found in the following files:
 
 **Consequences**
 
-This pattern will help making easier the addition of new states to the game
-without having to change the whole code.
-
+Using the State Pattern simplifies managing different game states.
+It enables smooth transitions between states based on user interactions and streamlines state-specific behaviors.
+This approach ensures clearer code and easier future modifications or additions of new states, making the overall game development process more straightforward.
 #### DIFFERENT COLLECTABLES MUST HAVE DIFFERENT EFFECTS
 
 **Problem in Context**
@@ -140,6 +167,10 @@ These classes could be found in the following files:
 - [Coin](./src/main/java/ldts/dino/model/game/elements/collectables/Coin.java)
 - [Shield](./src/main/java/ldts/dino/model/game/elements/collectables/Shield.java)
 
+**Consequences**
+
+???? 
+
 #### RANDOMLY GENERATING ELEMENTS
 
 **Problem in Context**
@@ -151,7 +182,7 @@ should not spawn in the same position.
 **The Pattern**
 
 The **Factory Method** Pattern defines an interface for creating an object, but lets subclasses decide which class to instantiate.
-It promotes the creation of objects through a common interface
+It promotes the creation of objects through a common interface.
 
 **Implementation**
 
@@ -181,8 +212,10 @@ These classes could be found in the following files:
 
 **Consequences**
 
-This pattern (with the right logic) will centralize the creation
-of elements in ElementsFactory class, making all the logic of the creation isolated from the rest of the code.
+Using the Factory Method Pattern streamlines how our game generates obstacles and collectibles.
+This pattern ensures a logical generation process, preventing elements from appearing in the same position.
+By adopting this approach, we establish a consistent method for creating these objects, allowing different types to be generated while adhering to a unified structure. 
+This simplifies our codebase, enabling the game to produce diverse elements with unique behaviors while maintaining a clear and systematic generation logic.
 
 ------
 
